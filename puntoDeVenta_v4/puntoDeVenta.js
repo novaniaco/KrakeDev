@@ -19,7 +19,7 @@ calcularValorTotal = function () {
     cantidad=recuperarInt("txtCantidad");
     //4. Recuperar el porcentaje de descuento como int
     porcentajeDescuento=recuperarInt("txtPorcentajeDescuento");
-    
+
     //4. Invocar a calcularSubtotal y el retorno guardar en la variable valorSubtotal
     // Tomar en cuenta el orden de como pasa los parametos de la funcion y colocar bien
     // los parametros cuando invoca la funcion.
@@ -35,13 +35,15 @@ calcularValorTotal = function () {
         Si el caso de prueba es exitoso, hacer un commit
      */
     //6. Invocar a calcularValorDescuento y lo que devuelve guardar en la variable valorDescuento
+    valorDescuento=calcularValorDescuento(precioProducto,porcentajeDescuento);
     //7. Mostrar el resultado en el componente lblDescuento
+    mostrarTexto("lblDescuento",valorDescuento);
     /*
         Caso de prueba: 
             - cantidad: 10 
             - precioProducto: 5.4  
             - descuento: 10
-            - Descuento esperado: 5.4
+            - Descuento esperado: 0.54
         Si el caso de prueba es exitoso, hacer un commit
      */
     //8. Invocar a calcularIVA y lo que devuelve guardar en la variable valorIVA
