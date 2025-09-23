@@ -5,9 +5,11 @@ jugar=function(){
     if(aleatorio>3){
         console.log("ES MAYOR A 3");
         console.log("GANASTE");
+    }else{
+        console.log("ES MENOR A 3");
+        console.log("PERDISTE");
     }
 }
-
 //Crear una función llamada lanzarDado
 //No recibe parámetros
 //Retorna un número aleatorio entre 1 y 6
