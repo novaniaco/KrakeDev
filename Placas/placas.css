@@ -1,0 +1,22 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+button {
+    margin: 5px;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#lblResultado {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+#lblErrores {
+    color: red;
+    white-space: pre-line;
+}

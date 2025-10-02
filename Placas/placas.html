@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Validación de Placas</title>
+    <link rel="stylesheet" href="placas.css">
+    <script src="serviciosPlacas.js"></script>
+    <script src="placas.js"></script>
+    <script src="utilitarios.js"></script>
+</head>
+<body>
+    <h1>Validación de Placas de Autos</h1>
+
+    <label for="txtPlaca">Ingrese la placa: </label>
+    <input type="text" id="txtPlaca">
+
+    <button onclick="validarPlaca()">VALIDAR</button>
+    <button onclick="limpiar()">LIMPIAR</button>
+
+    <p id="lblResultado"></p>
+    <p id="lblErrores"></p>
+    <p id="lblProvincia"></p>
+    <p id="lblTipo"></p>
+    <p id="lblPicoPlaca"></p>
+</body>
+</html>
