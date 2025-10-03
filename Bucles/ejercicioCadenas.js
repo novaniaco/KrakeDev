@@ -39,3 +39,31 @@ invertirCadena=function(cadena){
     }
     return resultado;
 }
+
+buscarLetra=function(cadena,letra){
+    let letralterada;
+    let existeLetra=false;
+    for(let i=0;i<cadena.length;i++){
+        letra=cadena.charAt(i);
+        letralterada=cadena.charAt(i);
+        if(letralterada==letra){
+            existeLetra=true;
+         }
+    }
+    if(existeLetra==true){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+contarMayusculas=function(cadena){
+    let letra;
+    let contadorMayusculas=0;
+    for(let i=0;i<cadena.length;i++){
+        letra=cadena.charAt(i);
+        if(esMayuscula(letra)){
+            contadorMayusculas=contadorMayusculas+1;
+        }
+    }
+}
