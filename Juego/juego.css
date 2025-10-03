@@ -1,0 +1,77 @@
+/* Fondo general */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(to right, #74ebd5, #ACB6E5);
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Título */
+h1 {
+    color: #222;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Contenedor de imágenes */
+div {
+    margin: 20px 0;
+}
+
+/* Imágenes de opciones */
+img {
+    width: 120px;
+    margin: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 12px;
+}
+
+/* Efecto hover */
+img:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.3);
+}
+
+/* Imagen del computador */
+#imgComputador {
+    width: 150px;
+    margin-top: 15px;
+    border: 2px solid #333;
+    border-radius: 12px;
+    background: white;
+    padding: 5px;
+}
+
+/* Resultado del juego */
+#resultado {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-top: 20px;
+    color: #222;
+}
+
+/* Puntajes */
+p {
+    font-size: 1.2em;
+    margin: 5px 0;
+}
+
+/* Botón nueva partida */
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 8px;
+    background-color: #222;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background-color: #444;
+}
