@@ -28,3 +28,8 @@ guardarPalabra=function(){
     console.log("Palabra secreta guardada:", palabraSecreta);
     alert("Palabra guardada correctamente");
 }    
+//PASO 2 FUNCIÓN PARA MOSTRAR LETRAS EN LOS DIVS
+mostrarLetra=function(letra,posición){
+    let id="div"+posición;
+    mostrarTexto(id,letra);
+}
