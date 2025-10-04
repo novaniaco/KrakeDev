@@ -27,7 +27,11 @@ guardarPalabra=function(){
     palabraSecreta = palabra;
     console.log("Palabra secreta guardada:", palabraSecreta);
     alert("Palabra guardada correctamente");
-}    
+    // Limpia la caja de texto y bloquea el campo
+    document.getElementById("txtSecreta").value = "";
+    document.getElementById("txtSecreta").disabled = true; // evita que la cambien luego
+}
+ 
 //PASO 2 FUNCIÓN PARA MOSTRAR LETRAS EN LOS DIVS
 mostrarLetra=function(letra,posicion){
     let id="div"+posicion;
@@ -51,19 +55,32 @@ validar=function(letra){
 //PASO 4 FUNCIÓN QUE SE EJECUTA DESDE EL BOTÓN VALIDAR
 ingresarLetra=function() {
     let letra = recuperarTexto("txtLetra");
-     intentos++;
+     
 
     if (esMayuscula(letra) && letra.length === 1) {
+        let erroresAntes=errores;
         validar(letra);
-//PASO 5 ALERTS DE VICTORIA O DERROTA
+
+        if(errores>erroresAntes){
+            intentos++
+        }
+//PASO 5 y 7 ALERTS DE VICTORIA O DERROTA GIFS
         if (coincidencias === 5) {
             document.getElementById("ahorcadoImagen").src = "ganador.gif";
             alert("¡HA GANADO!");
-        } else if (intentos >= 10) {
+        } else if (intentos >= 9) {
             document.getElementById("ahorcadoImagen").src = "gameOver.gif";
             alert("¡HA PERDIDO!");
         }
     } else {
         alert("SOLO SE ACEPTAN MAYÚSCULAS (una sola letra)");
+    }
+}
+//PASO 6 FUNCIÓN MOSTRAR AL AHORCADO
+mostrarAhorcado=function(){
+    errores++
+     if (errores > 0 && errores <= 9) {
+        let ruta = "Ahorcado_0" + errores + ".png";
+        document.getElementById("ahorcadoImagen").src = ruta;
     }
 }
