@@ -33,3 +33,17 @@ mostrarLetra=function(letra,posición){
     let id="div"+posición;
     mostrarTexto(id,letra);
 }
+//PASO 3 VALIDAR LA LETRA SI ES QUE EXISTE EN LA PALABRA
+validar=function(letra){
+    let letrasEncontradas=0;
+    for(let i=0;i<palabraSecreta.length;i++){
+        if(palabraSecreta[i]===letra){
+            mostrarLetra(letra,i);
+            letrasEncontradas++;
+            coincidencias++
+        }
+    }
+    if(letrasEncontradas===0){
+        alert("LA LETRA INGRESADA NO ES PARTE DE LA PALABRA");
+    }
+}
