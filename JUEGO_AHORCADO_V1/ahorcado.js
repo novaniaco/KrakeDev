@@ -29,8 +29,8 @@ guardarPalabra=function(){
     alert("Palabra guardada correctamente");
 }    
 //PASO 2 FUNCIÓN PARA MOSTRAR LETRAS EN LOS DIVS
-mostrarLetra=function(letra,posición){
-    let id="div"+posición;
+mostrarLetra=function(letra,posicion){
+    let id="div"+posicion;
     mostrarTexto(id,letra);
 }
 //PASO 3 VALIDAR LA LETRA SI ES QUE EXISTE EN LA PALABRA
@@ -45,5 +45,17 @@ validar=function(letra){
     }
     if(letrasEncontradas===0){
         alert("LA LETRA INGRESADA NO ES PARTE DE LA PALABRA");
+        mostrarAhorcado();
+    }
+}
+//PASO 4 FUNCIÓN QUE SE EJECUTA DESDE EL BOTÓN VALIDAR
+ingresarLetra=function() {
+    let letra = recuperarTexto("txtLetra");
+    intentos++;
+
+    if (esMayuscula(letra) && letra.length === 1) {
+        validar(letra);
+
+        alert("SOLO SE ACEPTAN MAYÚSCULAS (una sola letra)");
     }
 }
