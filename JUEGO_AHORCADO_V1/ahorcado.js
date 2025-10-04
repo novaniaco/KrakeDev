@@ -51,11 +51,19 @@ validar=function(letra){
 //PASO 4 FUNCIÓN QUE SE EJECUTA DESDE EL BOTÓN VALIDAR
 ingresarLetra=function() {
     let letra = recuperarTexto("txtLetra");
-    intentos++;
+     intentos++;
 
     if (esMayuscula(letra) && letra.length === 1) {
         validar(letra);
-
+//PASO 5 ALERTS DE VICTORIA O DERROTA
+        if (coincidencias === 5) {
+            document.getElementById("ahorcadoImagen").src = "ganador.gif";
+            alert("¡HA GANADO!");
+        } else if (intentos >= 10) {
+            document.getElementById("ahorcadoImagen").src = "gameOver.gif";
+            alert("¡HA PERDIDO!");
+        }
+    } else {
         alert("SOLO SE ACEPTAN MAYÚSCULAS (una sola letra)");
     }
 }
