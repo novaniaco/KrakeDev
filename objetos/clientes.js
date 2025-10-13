@@ -1,8 +1,20 @@
 let clientes = [
-    { cedula: "123123", nombre: "Juan", edad: 20 },
-    { cedula: "222222", nombre: "Mario", edad: 50 },
-    { cedula: "333333", nombre: "Pepe", edad: 22 },
+    { cedula:"123123", nombre:"Juan", edad:20 },
+    { cedula:"222222", nombre:"Mario", edad:50 },
+    { cedula:"333333", nombre:"Pepe", edad:22 },
 ];
+ejecutarBusqueda=function(){
+    let valorCedula=recuperarTexto("txtCedulaBusqueda");
+    let respuesta=buscarCliente(valorCedula);
+    if(respuesta==null){
+        alert("cliente no encontrado");
+    }else {
+        mostrarTextoEnCaja("txtCedula",respuesta.cedula);
+        mostrarTextoEnCaja("txtNombre",respuesta.nombre);
+        mostrarTextoEnCaja("txtEdad",respuesta.edad);
+
+    }
+}
 crearCliente=function(){
     let valorCedula=recuperarTexto("txtCedula");
     let valorNombre=recuperarTexto("txtNombre");
