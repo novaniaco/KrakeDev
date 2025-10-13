@@ -7,12 +7,31 @@ crearCliente=function(){
     let valorCedula=recuperarTexto("txtCedula");
     let valorNombre=recuperarTexto("txtNombre");
     let valorEdad=recuperarFloat("txtEdad");
+    // Validaciones
+    if (valorCedula === "" || valorNombre === "" || document.getElementById("txtEdad").value.trim() === "") {
+        alert("Todos los campos son obligatorios.");
+        return;
+    }
+
+    if (!validarCedula(valorCedula)) {
+        alert("La cedula debe tener al menos 10 digitos");
+        return;
+    }
+    if (!validarNombre(valorNombre)) {
+        alert("El nombre debe tener entre 3 y 50 caracteres.");
+        return;
+    }
+    if (!validarEdad(valorEdad)) {
+        alert("La edad debe ser un numero entero mayor o igual a 18 y menor o igual a 100.");
+        return;
+    }
     let nuevoCliente={};
     nuevoCliente.cedula=valorCedula;
     nuevoCliente.nombre=valorNombre;
     nuevoCliente.edad=valorEdad;
 
     agregarCliente(nuevoCliente);
+    limpiarCampos();
 }
 agregarCliente=function(cliente){
     let resultado;
@@ -57,3 +76,22 @@ mostrarClientes = function () {
     contenidoTabla+="</table>"
     cmpTabla.innerHTML=contenidoTabla;
 }
+//Validaciones
+validarCedula = function(cedula) {
+    return /^[0-9]{10}$/.test(cedula);
+};
+
+validarNombre = function(nombre) {
+    let trimmed = nombre.trim();
+    return trimmed.length >= 3 && trimmed.length <= 50;
+};
+
+validarEdad = function(edad) {
+    return Number.isInteger(edad) && edad >= 18 && edad <= 100;
+};
+
+limpiarCampos = function() {
+    document.getElementById("txtCedula").value = "";
+    document.getElementById("txtNombre").value = "";
+    document.getElementById("txtEdad").value = "";
+};
