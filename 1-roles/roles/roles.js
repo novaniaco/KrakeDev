@@ -63,3 +63,70 @@ function ejecutarNuevo() {
     habilitarComponente("btnGuardar");
 
 }
+function buscarEmpleado(cedula) {
+    for (let i = 0; i < empleados.length; i++) {
+        if (empleados[i].cedula === cedula) {
+            return empleados[i];
+        }
+    }
+    return null;
+}
+function agregarEmpleado(empleado) {
+    let existente = buscarEmpleado(empleado.cedula);
+    if (existente == null) {
+        empleados.push(empleado);
+        return true;
+    } else {
+        return false;
+    }
+}
+function guardar() {
+    let cedula = recuperarTexto("txtCedula");
+    let nombre = recuperarTexto("txtNombre");
+    let apellido = recuperarTexto("txtApellido");
+    let sueldo = recuperarFloat("txtSueldo");
+
+    let valido = true;
+
+    if (cedula === "" || !/^\d{10}$/.test(cedula)) {
+        mostrarTexto("lblErrorCedula", "La cedula debe tener 10 digitos.");
+        valido = false;
+    }
+
+    if (nombre.length < 3 || !/^[A-Z]+$/.test(nombre)) {
+        mostrarTexto("lblErrorNombre", "El nombre debe tener al menos 3 letras, además, debe estar en mayusculas.");
+        valido = false;
+    }
+
+    if (apellido.length < 3 || !/^[A-Z]+$/.test(apellido)) {
+        mostrarTexto("lblErrorApellido", "El apellido debe tener al menos 3 letras, además, debe estar en mayusculas.");
+        valido = false;
+    }
+
+    if (isNaN(sueldo) || sueldo < 400 || sueldo > 5000) {
+        mostrarTexto("lblErrorSueldo", "El sueldo debe ser un numero entre 400 y 5000.");
+        valido = false;
+    }
+
+    if (!valido) {
+        return;
+    }
+
+    if (esNuevo) {
+        let nuevoEmpleado = {
+            cedula: cedula,
+            nombre: nombre,
+            apellido: apellido,
+            sueldo: sueldo
+        };
+
+        let resultado = agregarEmpleado(nuevoEmpleado);
+        if (resultado) {
+            alert("EMPLEADO GUARDADO CORRECTAMENTE");
+            mostrarEmpleados();
+        } else {
+            alert("YA EXISTE UN EMPLEADO CON LA CEDULA " + cedula);
+        }
+    }
+}
+
