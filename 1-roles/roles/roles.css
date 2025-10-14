@@ -186,3 +186,34 @@ tbody tr:nth-child(odd) {
     font-style: italic;
     font-size: 14px;
 }
+
+#tablaEmpleados table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#tablaEmpleados th {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    text-align: left;
+    font-weight: bold;
+}
+
+#tablaEmpleados td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#tablaEmpleados tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#tablaEmpleados tr:hover {
+    background-color: #d6eaff;
+    transition: 0.3s;
+}
