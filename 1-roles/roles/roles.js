@@ -188,6 +188,29 @@ function buscarPorRol() {
     }
 }
 
+function calcularAporteEmpleado(sueldo) {
+    return sueldo * 0.0945;
+}
+
+function calcularValorAPagar(sueldo, aporte, descuento) {
+    return sueldo - aporte - descuento;
+}
+
+function calcularRol() {
+    let sueldo = recuperarFloatDiv("infoSueldo");
+    let descuento = recuperarFloat("txtDescuentos");
+
+    if (isNaN(descuento) || descuento < 0 || descuento > sueldo) {
+        alert("El descuento debe ser un numero valido y no mayor al sueldo.");
+        return;
+    }
+
+    let aporte = calcularAporteEmpleado(sueldo);
+    let totalPagar = calcularValorAPagar(sueldo, aporte, descuento);
+
+    mostrarTexto("infoIESS", aporte.toFixed(2));
+    mostrarTexto("infoPago", totalPagar.toFixed(2));
+}
 
 function limpiarCajas() {
     document.getElementById("txtCedula").value = "";
