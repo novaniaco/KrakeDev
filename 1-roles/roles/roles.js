@@ -28,7 +28,7 @@ function mostrarOpcionResumen() {
 }
 
 function inicializar() {
-    mostrarOpcionEmpleado();
+    mostrarOpcionRol(); //cambiamos a rol
     deshabilitarFormulario();
 }
 
@@ -169,6 +169,23 @@ function guardar() {
     mostrarEmpleados();
     deshabilitarFormulario();
     esNuevo = false;
+}
+
+function buscarPorRol() {
+    let cedula = recuperarTexto("txtBusquedaCedulaRol"); 
+    let empleado = buscarEmpleado(cedula);
+
+    if (empleado == null) {
+        alert("EMPLEADO NO EXISTE");
+        mostrarTexto("infoCedula", "");
+        mostrarTexto("infoNombre", "");
+        mostrarTexto("infoSueldo", "");
+    } else {
+        
+        mostrarTexto("infoCedula", empleado.cedula);
+        mostrarTexto("infoNombre", empleado.nombre + " " + empleado.apellido);
+        mostrarTexto("infoSueldo", empleado.sueldo.toFixed(2));
+    }
 }
 
 
