@@ -6,6 +6,7 @@ let empleados = [
     { cedula: "1756133870", nombre: "Ako", apellido: "Gami", sueldo: 100.0 }
 ];
 
+
 function mostrarOpcionEmpleado() {
     mostrarComponente("divEmpleado");
     ocultarComponente("divRol");
@@ -28,63 +29,98 @@ function mostrarOpcionResumen() {
 
 function inicializar() {
     mostrarOpcionEmpleado();
+    deshabilitarFormulario();
 }
 
-deshabilitarComponente("txtCedula");
-deshabilitarComponente("txtNombre");
-deshabilitarComponente("txtApellido");
-deshabilitarComponente("txtSueldo");
-deshabilitarComponente("btnGuardar");
 
 function mostrarEmpleados() {
     let contenido = "<table>";
     contenido += "<tr><th>CEDULA</th><th>NOMBRE</th><th>APELLIDO</th><th>SUELDO</th></tr>";
 
-    for (let i = 0; i < empleados.length; i++) {
-        let emp = empleados[i];
-        contenido += "<tr>";
-        contenido += "<td>" + emp.cedula + "</td>";
-        contenido += "<td>" + emp.nombre + "</td>";
-        contenido += "<td>" + emp.apellido + "</td>";
-        contenido += "<td>" + emp.sueldo.toFixed(2) + "</td>";
-        contenido += "</tr>";
+    for (let emp of empleados) {
+        contenido += `<tr>
+            <td>${emp.cedula}</td>
+            <td>${emp.nombre}</td>
+            <td>${emp.apellido}</td>
+            <td>${emp.sueldo.toFixed(2)}</td>
+        </tr>`;
     }
 
     contenido += "</table>";
     document.getElementById("tablaEmpleados").innerHTML = contenido;
 }
 
+
 function ejecutarNuevo() {
     esNuevo = true;
+
+    // limpia solo valores (sin deshabilitar)
+    document.getElementById("txtCedula").value = "";
+    document.getElementById("txtNombre").value = "";
+    document.getElementById("txtApellido").value = "";
+    document.getElementById("txtSueldo").value = "";
+    document.getElementById("txtBusquedaCedula").value = "";
+    limpiarErrores();
+
+    // habilitar campos
     habilitarComponente("txtCedula");
     habilitarComponente("txtNombre");
     habilitarComponente("txtApellido");
     habilitarComponente("txtSueldo");
     habilitarComponente("btnGuardar");
-    limpiarCajas();
+
+    document.getElementById("txtCedula").focus();
 }
+
+
 function buscarEmpleado(cedula) {
-    for (let i = 0; i < empleados.length; i++) {
-        if (empleados[i].cedula === cedula) {
-            return empleados[i];
+    for (let emp of empleados) {
+        if (emp.cedula === cedula) {
+            return emp;
         }
     }
     return null;
 }
+
 function agregarEmpleado(empleado) {
     let existente = buscarEmpleado(empleado.cedula);
     if (existente == null) {
         empleados.push(empleado);
         return true;
+    }
+    return false;
+}
+
+function ejecutarBusqueda() {
+    let cedula = document.getElementById("txtBusquedaCedula").value; 
+    let empleado = buscarEmpleado(cedula);
+
+    if (empleado == null) {
+        alert("EMPLEADO NO EXISTE");
+        limpiarCajas();
     } else {
-        return false;
+        document.getElementById("txtCedula").value = empleado.cedula;
+        document.getElementById("txtNombre").value = empleado.nombre;
+        document.getElementById("txtApellido").value = empleado.apellido;
+        document.getElementById("txtSueldo").value = empleado.sueldo;
+
+        deshabilitarComponente("txtCedula");
+        habilitarComponente("txtNombre");
+        habilitarComponente("txtApellido");
+        habilitarComponente("txtSueldo");
+        habilitarComponente("btnGuardar");
+
+        esNuevo = false;
     }
 }
+
+
 function guardar() {
     let cedula = recuperarTexto("txtCedula");
     let nombre = recuperarTexto("txtNombre");
     let apellido = recuperarTexto("txtApellido");
     let sueldo = recuperarFloat("txtSueldo");
+
     limpiarErrores();
     let valido = true;
 
@@ -94,12 +130,12 @@ function guardar() {
     }
 
     if (nombre.length < 3 || !/^[A-Z]+$/.test(nombre)) {
-        mostrarTexto("lblErrorNombre", "El nombre debe tener al menos 3 letras, además, debe estar en mayusculas.");
+        mostrarTexto("lblErrorNombre", "El nombre debe tener al menos 3 letras y estar en mayusculas.");
         valido = false;
     }
 
     if (apellido.length < 3 || !/^[A-Z]+$/.test(apellido)) {
-        mostrarTexto("lblErrorApellido", "El apellido debe tener al menos 3 letras, además, debe estar en mayusculas.");
+        mostrarTexto("lblErrorApellido", "El apellido debe tener al menos 3 letras y estar en mayusculas.");
         valido = false;
     }
 
@@ -108,34 +144,43 @@ function guardar() {
         valido = false;
     }
 
-    if (!valido) {
-        return;
-    }
+    if (!valido) return;
 
     if (esNuevo) {
-        let nuevoEmpleado = {
-            cedula: cedula,
-            nombre: nombre,
-            apellido: apellido,
-            sueldo: sueldo
-        };
-
+        let nuevoEmpleado = { cedula, nombre, apellido, sueldo };
         let resultado = agregarEmpleado(nuevoEmpleado);
+
         if (resultado) {
             alert("EMPLEADO GUARDADO CORRECTAMENTE");
-            mostrarEmpleados();
-            deshabilitarFormulario();
         } else {
-            alert("YA EXISTE UN EMPLEADO CON LA CEDULA " + cedula);
+            alert("YA EXISTE UN EMPLEADO CON LA CEDULA "+cedula);
+        }
+
+    } else {
+        let empleado = buscarEmpleado(cedula);
+        if (empleado != null) {
+            empleado.nombre = nombre;
+            empleado.apellido = apellido;
+            empleado.sueldo = sueldo;
+            alert("EMPLEADO MODIFICADO EXITOSAMENTE");
         }
     }
+
+    mostrarEmpleados();
+    deshabilitarFormulario();
+    esNuevo = false;
 }
+
 
 function limpiarCajas() {
     document.getElementById("txtCedula").value = "";
     document.getElementById("txtNombre").value = "";
     document.getElementById("txtApellido").value = "";
     document.getElementById("txtSueldo").value = "";
+    document.getElementById("txtBusquedaCedula").value = "";
+    limpiarErrores();
+    deshabilitarFormulario();
+    esNuevo = false;
 }
 
 function limpiarErrores() {
@@ -152,3 +197,5 @@ function deshabilitarFormulario() {
     deshabilitarComponente("txtSueldo");
     deshabilitarComponente("btnGuardar");
 }
+
+mostrarEmpleados();
