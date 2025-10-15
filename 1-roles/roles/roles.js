@@ -1,5 +1,5 @@
 let esNuevo = false;
-
+let roles = [];
 let empleados = [
     { cedula: "1714616123", nombre: "John", apellido: "Cena", sueldo: 500.0 },
     { cedula: "0914632123", nombre: "Luisa", apellido: "Gonzalez", sueldo: 900.0 },
@@ -211,6 +211,60 @@ function calcularRol() {
     mostrarTexto("infoIESS", aporte.toFixed(2));
     mostrarTexto("infoPago", totalPagar.toFixed(2));
 }
+
+
+function buscarRol(cedula) {
+  for (let i = 0; i < roles.length; i++) {
+    if (roles[i].cedula === cedula) {
+      return roles[i];
+    }
+  }
+  return null;
+}
+
+function calcularAporteEmpleador(sueldo) {
+  return sueldo * 0.1115;
+}
+
+
+function agregarRol(rol) {
+  let existente = buscarRol(rol.cedula);
+  if (existente == null) {
+    roles.push(rol);
+    alert("Rol agregado correctamente");
+  } else {
+    alert("Ya existe un rol con esa cedula");
+  }
+}
+
+
+function guardarRol() {
+  let cedula = recuperarTexto("txtCedula");
+  let nombre = recuperarTexto("divNombre");
+  let sueldo = recuperarFloatDiv("divSueldo");
+  let aporteEmpleado = recuperarFloatDiv("divAporteEmpleado");
+  let valorAPagar = recuperarFloatDiv("divValorAPagar");
+
+  let aporteEmpleador = calcularAporteEmpleador(sueldo);
+
+  let rol = {
+    cedula: cedula,
+    nombre: nombre,
+    sueldo: sueldo,
+    valorAPagar: valorAPagar,
+    aporteEmpleado: aporteEmpleado,
+    aporteEmpleador: aporteEmpleador
+  };
+
+  agregarRol(rol);
+
+  document.getElementById("btnGuardar").disabled = true;
+
+  alert("Rol guardado con exito");
+}
+
+
+
 
 function limpiarCajas() {
     document.getElementById("txtCedula").value = "";
