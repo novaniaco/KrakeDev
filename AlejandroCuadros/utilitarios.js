@@ -34,5 +34,13 @@ recuperarFloat = function (idComponente) {
     let valorFlotante = parseFloat(valorCaja);
     return valorFlotante;
 }
+//agregamos las funciones de limpiar que siempre son necesarias
+function limpiarCajas() {
+  document.getElementById("txtNombre").value = "";
+  document.getElementById("txtEdad").value = "";
+}
 
-
+function limpiarErrores() {
+  mostrarTexto("lblErrorNombre", "");
+  mostrarTexto("lblErrorEdad", "");
+}

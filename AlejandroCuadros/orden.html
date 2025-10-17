@@ -4,7 +4,8 @@
         <script src="orden.js"></script>
         <script src="utilitarios.js"></script>
     </head>
-    <body>
+    <!--Se muestra la tabla al abrir la pagina-->
+    <body onload="mostrarPersonas()">  
         <h2>AGREGAR PERSONA</h2>
         <label>Nombre:</label>  <!--Uso label para que se muestre a lado o asignado a la caja de texto-->
         <input type="text" id="txtNombre"><br> <!--Uso br para que se rompa la linea y pase directamente a la siguiente linea-->
@@ -13,5 +14,8 @@
         <input type="text" id="txtEdad"><br> 
         <span id="lblErrorEdad" style="color: red;"></span><br>
         <input type="button" value="GUARDAR" onclick="">
+        <!--PARTE 2-->
+        <h3>LISTA DE PERSONAS</h3>
+        <div id="divTabla"></div><!--Aquí se mostrara una tabla a traves del id recuperado en una función que contendra los nombres y edades de las personas; uso div porque voy a contener una tabla, que es mucho más grande que un span-->
     </body>
 </html>
