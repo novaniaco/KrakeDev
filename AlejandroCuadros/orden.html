@@ -13,9 +13,14 @@
         <label>Edad:</label>  
         <input type="text" id="txtEdad"><br> 
         <span id="lblErrorEdad" style="color: red;"></span><br>
-        <input type="button" value="GUARDAR" onclick="">
+        <input type="button" value="GUARDAR" onclick="agregarPersona()">
         <!--PARTE 2-->
         <h3>LISTA DE PERSONAS</h3>
         <div id="divTabla"></div><!--Aquí se mostrara una tabla a traves del id recuperado en una función que contendra los nombres y edades de las personas; uso div porque voy a contener una tabla, que es mucho más grande que un span-->
+
+        <hr>
+  <input type="button" value="ENCONTRAR MAYOR" onclick="determinarMayor()">
+  <input type="button" value="ENCONTRAR MENOR" onclick="determinarMenor()">
+  <div id="resultado"></div>
     </body>
 </html>
