@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Fundamentos JavaScript</title>
+    <!-- Conectamos el CSS -->
+    <link rel="stylesheet" href="estilo.css">
+    <!-- Conectamos el JS -->
+    <script src="fundamentos.js" defer></script>
+</head>
+<body>
+
+    <h1>Guía de Fundamentos de JavaScript</h1>
+
+    <!-- ======================
+         EJEMPLO: PROMEDIO DE NOTAS
+         ====================== -->
+    <section>
+        <h2>Calcular Promedio de Notas</h2>
+        <input type="number" id="nota1" placeholder="Nota 1">
+        <input type="number" id="nota2" placeholder="Nota 2">
+        <input type="number" id="nota3" placeholder="Nota 3">
+        <button onclick="calcularPromedioNotas()">Calcular Promedio</button>
+        <div id="resultado"></div>
+    </section>
+
+    <!-- ======================
+         EJEMPLO: PIEDRA, PAPEL O TIJERA
+         ====================== -->
+    <section>
+        <h2>Piedra, Papel o Tijera</h2>
+        <select id="opcionUsuario">
+            <option value="piedra">Piedra</option>
+            <option value="papel">Papel</option>
+            <option value="tijera">Tijera</option>
+        </select>
+        <button onclick="mostrarEnDiv('resultadoPPT', juegoPPT(document.getElementById('opcionUsuario').value, ['piedra','papel','tijera'][numeroAleatorio(0,2)]))">
+            Jugar
+        </button>
+        <div id="resultadoPPT"></div>
+    </section>
+
+    <!-- ======================
+         EJEMPLO: LANZAR DADO
+         ====================== -->
+    <section>
+        <h2>Lanzar un dado</h2>
+        <button onclick="mostrarEnDiv('resultadoDado', 'Número: ' + lanzarDado())">Lanzar Dado</button>
+        <div id="resultadoDado"></div>
+    </section>
+
+    <!-- ======================
+         TABLA DE CLIENTES (EJEMPLO OBJETOS)
+         ====================== -->
+    <section>
+        <h2>Tabla de Clientes</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Edad</th>
+                </tr>
+            </thead>
+            <tbody id="tablaClientes">
+                <!-- Aquí se agregarán filas dinámicamente -->
+            </tbody>
+        </table>
+        <button onclick="
+            let nuevo = {nombre: 'Carlos', edad: 25};
+            agregarCliente(nuevo);
+        ">Agregar Cliente Ejemplo</button>
+    </section>
+
+</body>
+</html>

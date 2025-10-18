@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plantilla Base JavaScript</title>
+    <link rel="stylesheet" href="plantilla.css">
+    <script src="plantilla.js" defer></script>
+</head>
+<body>
+    <!-- ENCABEZADO -->
+    <header>
+        <h1>Mi Página de Prueba en JavaScript</h1>
+    </header>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <div class="container">
+        <h2>Formulario de Ejemplo</h2>
+        <p>Completa los campos y presiona “Mostrar Datos”</p>
+
+        <form id="formulario">
+            <label>Nombre:</label>
+            <input type="text" id="nombre" placeholder="Ingrese su nombre">
+
+            <label>Edad:</label>
+            <input type="number" id="edad" placeholder="Ingrese su edad">
+
+            <button type="button" onclick="mostrarDatos()">Mostrar Datos</button>
+            <button type="button" onclick="validarEdad()">Validar Edad</button>
+            <button type="button" onclick="lanzarDado()">Lanzar Dado 🎲</button>
+        </form>
+
+        <div id="resultado" class="alert"></div>
+
+        <h2>Tabla de Datos</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Edad</th>
+                </tr>
+            </thead>
+            <tbody id="tablaDatos">
+                <!-- Se llenará dinámicamente desde JS -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        &copy; 2025 | Plantilla HTML + CSS + JS
+    </footer>
+</body>
+</html>
