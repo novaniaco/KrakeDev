@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="evaluacion.js"></script>
+        <script src="utilitarios.js"></script>
+        <link rel="stylesheet" href="evaluación.css">
+    </head>
+    <body>
+        <header>
+        <h1>Sistema de Gestión de Productos</h1>
+    </header>
+
+    <nav>
+        <button onclick="mostrarSeccion('productos')">🛒 Productos</button>
+        <button onclick="mostrarSeccion('categorias')">📂 Categorías</button>
+        <button onclick="mostrarSeccion('stock')">📦 Stock</button>
+        <button onclick="mostrarSeccion('precios')">💲 Precios</button>
+    </nav>
+
+    <main>
+        <!-- Sección Productos -->
+        <section id="productos" class="seccion visible">
+            <h2>Gestión de Productos</h2>
+            <label>Nombre del producto:</label>
+            <input type="text" id="txtNombre" placeholder="Ej. Camisa">
+            <h5 id="lblErrorNombre" style="color: red;"></h5>
+            <label>Descripcion del producto:</label>
+            <input type="text" id="txtDescripcion" placeholder="Ej. Camisa Negra formal, ideal para eventos sociales">
+            <h5 id="lblErrorDescripcion" style="color: red;"></h5>
+            <label>Categoria:</label>
+            <input type="text" id="txtCategoria" placeholder="Ej. formal">
+            <h5 id="lblErrorCategoria" style="color: red;"></h5>
+            <label>Precio:</label>
+            <input type="number" id="txtPrecio" placeholder="Ej. 49.9">
+            <h5 id="lblErrorPrecio" style="color: red;"></h5>
+            <label>Stock:</label>
+            <input type="number" id="txtStock" placeholder="Ej. 15">
+            <h5 id="lblErrorStock" style="color: red;"></h5>
+            <button onclick="agregarProducto()">Agregar producto</button>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Número</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Categoría</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaProductos"></tbody>
+            </table>
+            </section>
+            
+            <h2>🛒 Carrito de Compras</h2>
+
+    <button onclick="agregarAlCarrito({nombre: 'Mouse', precio: 15})">Agregar Mouse</button>
+    <button onclick="agregarAlCarrito({nombre: 'Teclado', precio: 25})">Agregar Teclado</button>
+    <button onclick="agregarAlCarrito({nombre: 'Monitor', precio: 100})">Agregar Monitor</button>
+
+    <h3>Lista del carrito:</h3>
+    <table id="tablaCarrito"></table>
+        <!-- Sección Categorías -->
+        <section id="categorias" class="seccion">
+            <h2>Categorías disponibles</h2>
+            <ul id="listaCategorias"></ul>
+
+
+    <button onclick="agregarAlCarrito({nombre: 'Mouse', precio: 15})">Agregar Mouse</button>
+    <button onclick="agregarAlCarrito({nombre: 'Teclado', precio: 25})">Agregar Teclado</button>
+    <button onclick="agregarAlCarrito({nombre: 'Monitor', precio: 100})">Agregar Monitor</button>
+
+    <h3>Lista del carrito:</h3>
+    <table id="tablaCarrito"></table>
+        </section>
+
+        <!-- Sección Stock -->
+        <section id="stock" class="seccion">
+            <h2>Revisión de Stock</h2>
+            <div id="resultadoStock"></div>
+        </section>
+
+        <!-- Sección Precios -->
+        <section id="precios" class="seccion">
+            <h2>Control de Precios</h2>
+            <div id="resultadoPrecios"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 - Sistema Base de Productos</p>
+    </footer>
+</body>
+</html>
+    </body>
+</html>
